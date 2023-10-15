@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testcicd-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: testcicd
+  template:
+    metadata:
+      labels:
+        app: testcicd
+    spec:
+      containers:
+        - name: testcicd
+          image: anmaldev/testcicd:master
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: testcicd-service
+spec:
+  selector:
+    app: testcicd
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 32571
+  type: NodePort
