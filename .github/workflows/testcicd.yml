@@ -17,12 +17,12 @@ jobs:
         run: | 
           NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
           
-          sed -i "s/{version}/$NEW_VERSION/" ArgoApps/Apps/test-cicd.yml
+          sed -i "s/{version}/$NEW_VERSION/" ${{ github.workspace }}/Apps/test-cicd.yml
   
           # Commit the changes
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add ArgoApps/Apps/test-cicd.yml
+          git add ${{ github.workspace }}/Apps/test-cicd.yml
           git commit -m "Update version in test-cicd.yml to $NEW_VERSION"
           git push
         env:
