@@ -16,20 +16,16 @@ jobs:
       - run: echo ${{ github.event.client_payload.sha }}
 
       - name: Update dep.yml with new version
-        run: NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
-
-      - name: Run a one-line script
-        run: $NEW_VERSION
-
-        
-          # Update dep.yml with the new version
-#          sed -i "s/{version}/$NEW_VERSION/" dep.yml
-
-#          # Commit the changes
-#          git config --local user.email "action@github.com"
-#          git config --local user.name "GitHub Action"
-#          git add dep.yml
-#          git commit -m "Update version in dep.yml to $NEW_VERSION"
-#          git push
+        run: | 
+          NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
+          
+          sed -i "s/{version}/$NEW_VERSION/" test-cicd.yml
+  
+          # Commit the changes
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add test-cicd.yml
+          git commit -m "Update version in test-cicd.yml to $NEW_VERSION"
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
