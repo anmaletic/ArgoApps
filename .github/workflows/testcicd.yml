@@ -15,11 +15,11 @@ jobs:
 
       - run: echo ${{ github.event.client_payload.sha }}
 
-      - name: Update dep.yml with new version
+      - name: Update test-cicd.yml with new version
         run: | 
           NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
           
-          sed -i "s/{version}/$NEW_VERSION/" test-cicd.yml
+          sed -i "s/{version}/$NEW_VERSION/" apps/test-cicd.yml
   
           # Commit the changes
           git config --local user.email "action@github.com"
