@@ -13,8 +13,10 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
 
+      - run: echo ${{ github.event.client_payload.sha }}
+
       - name: Update dep.yml with new version
-        run: NEW_VERSION=$(echo ${{ github.event.client_payload }} | jq -r '.version')
+        run: NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
 
       - name: Run a one-line script
         run: $NEW_VERSION
