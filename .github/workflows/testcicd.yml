@@ -15,7 +15,7 @@ jobs:
 
       - name: Update test-cicd.yml with new version
         run: | 
-          NEW_VERSION=$( ${{echo github.event.client_payload.version }})
+          NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
           
           sed -i "s/{version}/$NEW_VERSION/" ArgoApps/ArgoApps/Apps/test-cicd.yml
   
