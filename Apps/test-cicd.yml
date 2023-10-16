@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: testcicd
-          image: anmaldev/testcicd:6f61dfe
+          image: anmaldev/testcicd:14ce576
           ports:
             - containerPort: 80
       imagePullSecrets:
