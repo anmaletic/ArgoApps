@@ -1,0 +1,29 @@
+name: Update TestCICD
+
+on:
+  repository_dispatch:
+    types:
+      - update-version-testcicd
+
+jobs:
+  update-dep-yml:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Update test-cicd.yml with new version
+        run: | 
+          NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
+          
+          sed -i "s/{version}/$NEW_VERSION/" Apps/test-cicd.yml
+  
+          # Commit the changes
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Apps/test-cicd.yml
+          git commit -m "Update version in test-cicd.yml to $NEW_VERSION"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
