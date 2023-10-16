@@ -17,9 +17,9 @@ jobs:
         run: | 
           NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
           
+          sed -i "17s/.*/          image: anmaldev/testcicd:$NEW_VERSION/" Apps/test-cicd.yml
           sed -i "22s/.*/# $NEW_VERSION/" Apps/test-cicd.yml
-  
-          # Commit the changes
+
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add Apps/test-cicd.yml
