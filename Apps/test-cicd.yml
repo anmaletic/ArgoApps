@@ -19,6 +19,7 @@ spec:
             - containerPort: 80
       imagePullSecrets:
         - name: dockerhub-secret
+# temp
 ---
 apiVersion: v1
 kind: Service
@@ -33,4 +34,3 @@ spec:
       targetPort: 80
       nodePort: 32571
   type: NodePort
-# 7b96195584d4e2fe9a81408d8072058e12456621
