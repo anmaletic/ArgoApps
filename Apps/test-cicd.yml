@@ -19,7 +19,6 @@ spec:
             - containerPort: 80
       imagePullSecrets:
         - name: dockerhub-secret
-# 6f61dfe
 ---
 apiVersion: v1
 kind: Service
