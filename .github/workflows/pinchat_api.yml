@@ -17,11 +17,11 @@ jobs:
         run: |
           NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
 
-          sed -i "17s|.*|          image: anmaldev/pinchat-api:$NEW_VERSION|" Apps/pinchat-api.yml
+          sed -i "17s|.*|          image: anmaldev/pinchat-api:$NEW_VERSION|" PINChat/pinchat-api.yml
 
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add Apps/pinchat-api.yml
+          git add PINChat/pinchat-api.yml
           git commit -m "Update version in pinchat-api.yml to $NEW_VERSION"
           git push
         env:
