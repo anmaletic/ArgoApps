@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pinchat-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pinchat-app
+  template:
+    metadata:
+      labels:
+        app: pinchat-app
+    spec:
+      containers:
+        - name: pinchat-app
+          image: anmaldev/pinchat-app:na
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: dockerhub-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pinchat-app-service
+spec:
+  selector:
+    app: pinchat-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 80002
+  type: NodePort
