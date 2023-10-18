@@ -1,4 +1,4 @@
-name: Update PINChat_Api
+name: Update PINChat_Server
 
 on:
   repository_dispatch:
