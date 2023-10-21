@@ -16,7 +16,7 @@ spec:
         - name: pinchat-api
           image: anmaldev/pinchat-api:na
           ports:
-            - containerPort: 80
+            - containerPort: 443
       imagePullSecrets:
         - name: dockerhub-secret
 ---
@@ -29,7 +29,7 @@ spec:
     app: pinchat-api
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 443
+      targetPort: 443
       nodePort: 30000
   type: NodePort
