@@ -28,12 +28,9 @@ spec:
   selector:
     app: pinchat-app
   ports:
-    - protocol: TCP
-      port: 80
+    - name: https
+      protocol: TCP
+      port: 443
       targetPort: 80
       nodePort: 30002
   type: NodePort
-  tls:
-    - hosts:
-        - local.kubernetes
-      secretName: my-selfsigned-secret
