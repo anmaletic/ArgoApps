@@ -18,7 +18,7 @@ spec:
           ports:
             - containerPort: 80
           env:
-            - name: Connection_String_Auth
+            - name: PINChatAuth
               valueFrom:
                 secretKeyRef:
                   name: auth-connection-string
