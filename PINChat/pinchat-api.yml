@@ -28,6 +28,11 @@ spec:
                 secretKeyRef:
                   name: data-connection-string
                   key: connection-string
+            - name: Secrets__SecurityKey
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-security-key
+                  key: securitykey
       imagePullSecrets:
         - name: dockerhub-secret
 ---
