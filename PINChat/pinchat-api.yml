@@ -17,6 +17,17 @@ spec:
           image: anmaldev/pinchat-api:3053549
           ports:
             - containerPort: 80
+          env:
+            - name: Connection_String_Auth
+              valueFrom:
+                secretKeyRef:
+                  name: auth-connection-string
+                  key: connection-string
+            - name: Connection_String_Data
+              valueFrom:
+                secretKeyRef:
+                  name: data-connection-string
+                  key: connection-string
       imagePullSecrets:
         - name: dockerhub-secret
 ---
