@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: pinchat-api
-          image: anmaldev/pinchat-api:44dfae1
+          image: anmaldev/pinchat-api:c81e251
           ports:
             - containerPort: 80
           env:
