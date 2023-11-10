@@ -18,11 +18,21 @@ spec:
           ports:
             - containerPort: 80
           env:
-            - name: Encryption__Key
+            - name: ConnectionStrings__PINChatAuth
               valueFrom:
                 secretKeyRef:
-                  name: subtlecrypto-key
-                  key: encryptionkey
+                  name: auth-connection-string
+                  key: connection-string
+            - name: ConnectionStrings__PINChatData
+              valueFrom:
+                secretKeyRef:
+                  name: data-connection-string
+                  key: connection-string
+            - name: Secrets__SecurityKey
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-security-key
+                  key: securitykey
       imagePullSecrets:
         - name: dockerhub-secret
 ---
