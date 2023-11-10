@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: pinchat-app
-          image: anmaldev/pinchat-app:798f2d1
+          image: anmaldev/pinchat-app:34ec6ae
           ports:
             - containerPort: 80
           env:
@@ -23,6 +23,21 @@ spec:
                 secretKeyRef:
                   name: subtlecrypto-key
                   key: encryptionkey
+            - name: ConnectionStrings__PINChatAuth
+              valueFrom:
+                secretKeyRef:
+                  name: auth-connection-string
+                  key: connection-string
+            - name: ConnectionStrings__PINChatData
+              valueFrom:
+                secretKeyRef:
+                  name: data-connection-string
+                  key: connection-string
+            - name: Secrets__SecurityKey
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-security-key
+                  key: securitykey
       imagePullSecrets:
         - name: dockerhub-secret
 ---
