@@ -17,12 +17,6 @@ spec:
           image: anmaldev/pinchat-app:ed3cc57
           ports:
             - containerPort: 80
-          env:
-            - name: Encryption__Key
-              valueFrom:
-                secretKeyRef:
-                  name: subtlecrypto-key
-                  key: encryptionkey
       imagePullSecrets:
         - name: dockerhub-secret
 ---
