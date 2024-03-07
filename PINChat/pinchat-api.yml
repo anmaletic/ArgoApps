@@ -33,6 +33,11 @@ spec:
                 secretKeyRef:
                   name: jwt-security-key
                   key: securitykey
+            - name: Secrets__EncryptionKey
+              valueFrom:
+                secretKeyRef:
+                  name: db-encryption-key
+                  key: encryptionkey
       imagePullSecrets:
         - name: dockerhub-secret
 ---
