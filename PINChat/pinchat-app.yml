@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: pinchat-app
-          image: anmaldev/pinchat-app:fac06dd
+          image: anmaldev/pinchat-app:64a30c9
           ports:
             - containerPort: 80
       imagePullSecrets:
