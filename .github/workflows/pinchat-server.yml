@@ -16,7 +16,7 @@ jobs:
         run: |
           NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
 
-          sed -i "17s|.*|          image: anmaldev/pinchat-server:$NEW_VERSION|" PINChat/pinchat-server.yml
+          sed -i "17s|.*|          image: anmaldev/pinchat-chatserver:$NEW_VERSION|" PINChat/pinchat-server.yml
 
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
