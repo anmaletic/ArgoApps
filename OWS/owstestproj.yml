@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: owstestproj
-          image: anmaldev/owstestproj:262e42b
+          image: anmaldev/owstestproj:43f6cb3
           ports:
             - containerPort: 80
       imagePullSecrets:
