@@ -1,0 +1,28 @@
+name: Update PINChat_Api
+
+on:
+  repository_dispatch:
+    types:
+      - update-version-owstestproj
+
+jobs:
+  update-dep-yml:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Update owstestproj.yml with new version
+        run: |
+          NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
+
+          sed -i "17s|.*|          image: anmaldev/owstestproj:$NEW_VERSION|" PINChat/owstestproj.yml
+
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add PINChat/owstestproj.yml
+          git commit -m "Update version in owstestproj.yml to $NEW_VERSION"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
