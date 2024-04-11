@@ -1,4 +1,4 @@
-name: Update PINChat_Api
+name: Update OWS_TestProj
 
 on:
   repository_dispatch:

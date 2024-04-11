@@ -17,27 +17,6 @@ spec:
           image: anmaldev/owstestproj:262e42b
           ports:
             - containerPort: 80
-          env:
-            - name: ConnectionStrings__PINChatAuth
-              valueFrom:
-                secretKeyRef:
-                  name: auth-connection-string
-                  key: connection-string
-            - name: ConnectionStrings__PINChatData
-              valueFrom:
-                secretKeyRef:
-                  name: data-connection-string
-                  key: connection-string
-            - name: Secrets__SecurityKey
-              valueFrom:
-                secretKeyRef:
-                  name: jwt-security-key
-                  key: securitykey
-            - name: Secrets__EncryptionKey
-              valueFrom:
-                secretKeyRef:
-                  name: db-encryption-key
-                  key: encryptionkey
       imagePullSecrets:
         - name: dockerhub-secret
 ---
