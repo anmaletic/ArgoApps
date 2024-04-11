@@ -21,7 +21,7 @@ jobs:
 
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add PINChat/owstestproj.yml
+          git add OWS/owstestproj.yml
           git commit -m "Update version in owstestproj.yml to $NEW_VERSION"
           git push
         env:
