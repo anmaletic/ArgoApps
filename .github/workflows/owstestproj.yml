@@ -17,7 +17,7 @@ jobs:
         run: |
           NEW_VERSION=$(echo ${{ github.event.client_payload.version }})
 
-          sed -i "17s|.*|          image: anmaldev/owstestproj:$NEW_VERSION|" PINChat/owstestproj.yml
+          sed -i "17s|.*|          image: anmaldev/owstestproj:$NEW_VERSION|" OWS/owstestproj.yml
 
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
