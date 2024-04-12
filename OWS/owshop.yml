@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: owshop-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: owshop
+  template:
+    metadata:
+      labels:
+        app: owshop
+    spec:
+      containers:
+        - name: owshop
+          image: anmaldev/owshop:262e42b
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: dockerhub-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: owshop-service
+spec:
+  selector:
+    app: owshop
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30003
+  type: NodePort
