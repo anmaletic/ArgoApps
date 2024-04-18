@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: owshop
-          image: anmaldev/owshop:f269b42
+          image: anmaldev/owshop:9021044
           ports:
             - containerPort: 80
       imagePullSecrets:
