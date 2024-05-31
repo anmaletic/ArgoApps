@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: battleship-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: battleship-app
+  template:
+    metadata:
+      labels:
+        app: battleship-app
+    spec:
+      containers:
+        - name: battleship-app
+          image: anmaldev/battleship-app:master
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: dockerhub-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: battleship-app-service
+spec:
+  selector:
+    app: battleship-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30200
+  type: NodePort
