@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: battleship-app
-          image: anmaldev/battleship-app:v.2.0.4
+          image: anmaldev/battleship-app:v.2.0.5
           ports:
             - containerPort: 80
       imagePullSecrets:
