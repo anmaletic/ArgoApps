@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-api
+  template:
+    metadata:
+      labels:
+        app: image-api
+    spec:
+      containers:
+        - name: image-api
+          image: anmaldev/image-api:v.1.0.0
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: dockerhub-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: image-api-service
+spec:
+  selector:
+    app: image-api
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30300
+  type: NodePort
