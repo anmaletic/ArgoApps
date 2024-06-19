@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: image-api
-          image: anmaldev/image-api:v.1.1.0
+          image: anmaldev/image-api:v.1.2.0
           ports:
             - containerPort: 8080
       imagePullSecrets:
