@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: battleship-server
-          image: anmaldev/battleship-server:v.1.0.4
+          image: anmaldev/battleship-server:v.1.0.5
           ports:
             - containerPort: 8080
       imagePullSecrets:
